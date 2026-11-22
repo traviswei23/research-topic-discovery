@@ -15,4 +15,6 @@
 | 可推进题目 | selected 与 reserve 的卡上再填 baseline（朴素对照）、rival（竞争解释）、observable（测什么）、falsifier（什么观察能推翻）、resources、value、next。selected 数组列出排名后的主选编号。主选卡含 pilot 对象。能试算时 status=run，填 protocol、protocol_sha256、result、result_sha256、observation、implication、limits 以及 signal（positive、negative、inconclusive 或 informative_null）；缺少执行条件时 status=unavailable，填具体 reason 和 alternative。 |
 | 收敛 | review 含 mode（self、fresh_same_family、different_family、human）、attack、answer、trace。后三种写 reviewer，留实际调用或回执。rounds 数组每项含 trigger、evidence、decision、change，写清何种证据维持或改变了哪些候选。decision 取 shortlist、no_viable 或 partial。stop 写为何可结束，next_step 写下游拿到材料先做什么。只有一个非重复候选时用 narrow_reason 说明范围。 |
 
+物理推导、仿真或复现的课题在档案根节点填 study_type=physics，逐个主选填 physical_model。候选难分排序时填写 pairs 数组。字段、证据类别与成对比较方法见[模型与候选改进](refinement.md)。未指定类型的旧档案按通用研究读取。
+
 交付少于用户指定数量时，先补做独立分支和反例搜索。仍不足时报告真实条数和原因，decision=partial。完全没有可行项时可给 no_viable，并列对每个分支的证据。check 对结构合格的 shortlist 或 no_viable 返回 0；partial 或档案有错返回非零。程序没有为近邻搜不到或自评高分设置“首创”标签。

@@ -101,6 +101,16 @@ class TopicRunTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "相对路径"):
             check(self.data, self.root)
 
+    def test_physics_study_cannot_omit_model(self):
+        self.data["study_type"] = "physics"
+        with self.assertRaisesRegex(ValueError, "物理最小模型"):
+            check(self.data, self.root)
+
+    def test_pairwise_result_must_be_from_actual_pair(self):
+        self.data["pairs"] = [dict(left="I1", right="I2", choice="I3", basis="cost", reversal="new measurement")]
+        with self.assertRaisesRegex(ValueError, "本场候选"):
+            check(self.data, self.root)
+
 
 if __name__ == "__main__":
     unittest.main()

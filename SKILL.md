@@ -14,4 +14,6 @@ description: 从宽泛兴趣、异常现象、种子文献或若干备选出发�
 5. **重新取舍。** 每轮将跑出的观察与预设判据对比。阴性结果可能定位有意义的失效边界。意外结果引出可检验的新解释时，回到原文检索并重开相关分支。决定深化、扩大、改题或停止，并写下触发证据。达到用户数量、每项都有具名前作、竞争解释和首个判别行动，才可交付完整短名单。资源或证据确实耗尽时保留已证实的部分，说明差额、去过的渠道和限制。
 6. **交接。** 按[定题卡](references/handoff.md)写主问题、拟做的具体操作、与最近邻的差别、结果两种方向的价值和会改判的观察。运行随包检查器核对编号、原文、试算和主选数，再生成交接提纲。保留候选、淘汰、范围与证据位置。将剩余缺口交给 literature-gap-discovery，具体创新主张交给 research-idea-novelty-check，导师决策和资源方案交给 advisor-proposal-builder。未装后续技能时，凭本次交接卡即可单独继续。选题阶段的短名单不能证明全球首创。
 
-[原 20 个技能如何进入各环节](references/source-application.md) · [上游固定版本](references/sources.md) · [上游工作流与实际采用范围](references/workflows.md)
+两项或更多候选难以排序时，按[候选改进与成对比较](references/refinement.md)检查四项标准和会改变取舍的证据。涉及物理推导或数值模拟的主选同时按该页填写最小模型、极限校验和逐主张证据状态，分别交接解析与数值工作。
+
+[原 20 个技能如何进入各环节](references/source-application.md) · [上游固定版本](references/sources.md) · [ARIS 与自主研究工作流](references/workflows.md) · [EvoScientist 与物理研究工作流](references/refinement.md)

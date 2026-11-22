@@ -1,6 +1,6 @@
 # 来源与方法去向
 
-本页列出最初精选的 20 个源入口。点击条目可定位到所用版本的原文，配套链接用于核查相应方法。每个来源的运行条件与交付位置见[逐项应用表](source-application.md)。新增的 ARIS 和 Kalaris 共三个工作流入口另列于[工作流对照](workflows.md)。
+本页列出最初精选的 20 个源入口。点击条目可定位到所用版本的原文，配套链接用于核查相应方法。每个来源的运行条件与交付位置见[逐项应用表](source-application.md)。新增五个直接入口，其中 ARIS 和 Kalaris 共三项见[工作流对照](workflows.md)，EvoScientist 与物理建模两项见[候选改进与理论验证](refinement.md)。
 
 ## 1. socratic-research-topic · 对话澄清
 

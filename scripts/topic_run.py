@@ -100,6 +100,8 @@ def check(data, root):
     need(all(isinstance(x, str) and x in cards for x in active)
          and len(set(active)) == len(active), "主选编号有误或重复")
     states = {"selected", "reserve", "covered", "merged", "infeasible", "parked"}
+    study = data.get("study_type", "general")
+    need(study in ("general", "physics"), "研究类型有误")
     hypotheses = set()
     for c in cards.values():
         words(c, "question lens mechanism prediction status reason")
@@ -124,6 +126,16 @@ def check(data, root):
         if c["status"] in ("selected", "reserve"):
             words(c, "baseline rival observable falsifier resources value next")
         if c["status"] == "selected":
+            if study == "physics" or "physical_model" in c:
+                model = c.get("physical_model")
+                need(isinstance(model, dict), f"{cid} 缺少物理最小模型")
+                words(model, "model conventions assumptions derivation limit_check analytic_next numerical_next")
+                ledger = array(model, "claims")
+                need(bool(ledger), f"{cid} 缺少物理主张台账")
+                for entry in ledger:
+                    words(entry, "statement basis status")
+                    need(entry["status"] in ("established", "verified_numerically", "plausible",
+                                             "conjecture", "unknown"), "物理主张证据类别有误")
             p = c.get("pilot")
             need(isinstance(p, dict), f"{cid} 缺少验证记录")
             if p.get("status") == "run":
@@ -154,6 +166,11 @@ def check(data, root):
     need(bool(rounds), "缺少改变或维持选择的轮次记录")
     for row in rounds:
         words(row, "trigger evidence decision change")
+    for match in data.get("pairs", []):
+        words(match, "left right choice basis reversal")
+        left, right = match["left"], match["right"]
+        need(left in cards and right in cards and left != right, "成对比较的候选无效")
+        need(match["choice"] in (left, right, "tie"), "比较结果不在本场候选内")
     return cards
 
 
@@ -175,12 +192,22 @@ def render(data, cards):
             lines.extend([f"试算　{pilot['observation']}。{pilot['implication']}。{pilot['limits']}", ""])
         else:
             lines.extend([f"未执行试算　{pilot['reason']}。{pilot['alternative']}", ""])
+        if "physical_model" in c:
+            model = c["physical_model"]
+            lines.extend([f"模型　{model['model']}。{model['conventions']}。{model['assumptions']}",
+                          f"校验　{model['derivation']}。{model['limit_check']}", "",
+                          f"解析工作　{model['analytic_next']}", f"数值工作　{model['numerical_next']}", ""])
+            for item in model["claims"]:
+                lines.append(f"- {item['status']}　{item['statement']}。{item['basis']}")
+            lines.append("")
     lines.extend(["## 取舍", ""])
     for c in cards.values():
         lines.append(f"- {c['id']}　{c['question']}　{c['status']}　{c['reason']}")
     lines.extend(["", "## 反方与重排", "", data["review"]["attack"], "", data["review"]["answer"], ""])
     for row in data["rounds"]:
         lines.append(f"- {row['trigger']}。{row['evidence']}。{row['decision']}。{row['change']}")
+    for match in data.get("pairs", []):
+        lines.append(f"- {match['left']} 与 {match['right']}　{match['choice']}。{match['basis']}。{match['reversal']}")
     lines.extend(["", "## 停止依据与下一步", "", data["stop"], "", data["next_step"]])
     return "\n".join(lines)
 
