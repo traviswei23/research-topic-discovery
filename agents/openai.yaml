@@ -1,4 +1,4 @@
 interface:
   display_name: "从方向到题目"
-  short_description: "从研究兴趣、现实难题和资源边界提炼可检验的问题，并比较备选题目"
-  default_prompt: "用 $research-topic-discovery 帮我把当前大方向变成有依据的可检验题目。"
+  short_description: "多源检索并展开不同机制的研究问题，用最近邻和小型验证选题"
+  default_prompt: "用 $research-topic-discovery 从我的大方向出发，实际检索、比较候选并验证关键假设，交付有原文依据的主选和取舍。"

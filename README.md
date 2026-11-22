@@ -1,9 +1,9 @@
-# 从大方向到科研题目
+# 从大方向到可以验证的科研题目
 
-给出一个研究方向、现实约束或让你困惑的现象，该技能会帮你形成可比较、能检验的题目。可独立使用，详见 [SKILL.md](SKILL.md)。
+输入研究方向与真实限制，得到可比较的研究问题、最近似前作、淘汰理由、低成本验证和可直接交接的一页卡。普通调用执行完整流程。
 
-**调用示例**　“用 $research-topic-discovery。我对精密测量感兴趣，目前有一套装置和两个月时间，还想不出题目。先帮我梳理几个实质不同的研究问题。”
+> 用 $research-topic-discovery。我对精密测量感兴趣，手头只有仿真资源。请先找文献，从不同机制提出问题，检验最值得做的分支，并推荐一个可以交给导师讨论的题目。
 
-通常得到一页定题卡、候选取舍、证据边界和首项核实行动。方法与二十份 GitHub 技能的对应关系见[来源](references/sources.md)。
+将仓库放入项目的 `.agents/skills/research-topic-discovery/`。Python 3.9 或以上即可运行档案检查与交接工具。索引、专业学会和用户给定材料按实际能力访问。只有本地材料时可完成限定范围的选题。
 
-[上游固定版本、可用附件与缺件说明](references/source-availability.md)
+[技能入口](SKILL.md) · [怎样运行](references/execution.md) · [原 20 个技能逐项采用了什么](references/source-application.md) · [新增的三套研究工作流](references/workflows.md) · [上游固定版本和缺件](references/source-availability.md)
